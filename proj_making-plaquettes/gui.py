@@ -4,7 +4,8 @@ from ast import literal_eval
 import ipywidgets as widgets
 import matplotlib.pyplot as plt # Import graphical library for plots
 
-from utils import custom_grid_2d_graph, is_stabilizer, add_stabilizer_to_graph, shift_stabilizer
+from utils import custom_grid_2d_graph, is_stabilizer, add_stabilizer_to_graph, shift_stabilizer, \
+                  get_options_for_draw
 
 ####################################################
 
@@ -89,21 +90,7 @@ def launch_interactive_composer():
         nonlocal G
         print('nodes =', G.nodes, '\nedges =', G.edges)
         #pos = nx.spring_layout(G, iterations=100, seed=39775)
-        node_color = []
-        for n in G.nodes:
-            if n in x_ancillas:
-                node_color.append('tab:blue')
-            elif n in z_ancillas:
-                node_color.append('tab:red')
-            else:
-                node_color.append('yellow')
-        options = {
-            'with_labels': True,
-            'node_color': node_color,
-            'node_size': 400,
-            'width': 1,
-            'font_size': 10
-        }
+        options = get_options_for_draw(G, x_ancillas, z_ancillas)
         if False:
             pos = nx.shell_layout(G)
             nx.draw(G, pos, **options)

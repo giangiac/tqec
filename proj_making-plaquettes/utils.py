@@ -1,5 +1,5 @@
 import networkx as nx
-from typing import List, Tuple
+from typing import List, Tuple, Dict
 from ast import literal_eval
 
 ####################################################
@@ -81,5 +81,37 @@ def add_stabilizer_to_graph(G: nx.Graph, stab: str) -> Tuple[nx.Graph, Tuple[int
     G.add_node(ancilla)
     G.add_edges_from([(n, ancilla) for n in nodes])
     return G, ancilla
+
+####################################################
+
+def get_options_for_draw(G: nx.Graph, x_ancillas: List, z_ancillas: List) -> Dict:
+    node_color = []
+    for n in G.nodes:
+        if n in x_ancillas:
+            node_color.append('tab:blue')
+        elif n in z_ancillas:
+            node_color.append('tab:red')
+        else:
+            node_color.append('yellow')
+    options = {
+        'with_labels': True,
+        'node_color': node_color,
+        'node_size': 400,
+        'width': 1,
+        'font_size': 10
+    }
+    return options
+
+####################################################
+
+def remove_edges_between_data(G: nx.Graph) -> nx.Graph:
+    for e in G.edges:
+        do_remove = True
+        # If both nodes have only even coordinate, remove the edge.
+        do_remove = do_remove and (e[0][0]%2==0 and e[0][1]%2==0)
+        do_remove = do_remove and (e[1][0]%2==0 and e[1][1]%2==0)
+        if do_remove:
+            G.remove_edge(e[0], e[1])
+    return G
 
 ####################################################
