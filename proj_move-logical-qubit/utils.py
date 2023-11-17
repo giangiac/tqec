@@ -41,7 +41,7 @@ def move_L_shape(distance: int, v_shift: int, h_shift: int, resize_to_distance: 
             if (v+h)%2==0:
                 arrang[v][h] = 3
             else:
-                arrang[v][h] = 2
+                arrang[v][h] = 4
     # Final position of logical qubit and horizontal shift.
     for v in range(v_shift+1, distance + v_shift):
         for h in range(1, distance + h_shift):
@@ -62,19 +62,23 @@ def move_L_shape(distance: int, v_shift: int, h_shift: int, resize_to_distance: 
             # Left boundary
             if h+1 < h_dim and arrang[v][h+1]==3:
                 arrang[v][h] = 2
+            elif h+1 < h_dim and arrang[v][h+1]==8:
+                arrang[v][h] = 14
             # Right boundary
             if h > 0 and arrang[v][h-1]==3:
                 arrang[v][h] = 5
             elif h > 0 and arrang[v][h-1]==8:
                 arrang[v][h] = 10
             # Top boundary
-            if v+1 < v_dim and arrang[v+1][h]==2:
+            if v+1 < v_dim and arrang[v+1][h]==4:
                 arrang[v][h] = 1
             elif v+1 < v_dim and arrang[v+1][h]==9:
                 arrang[v][h] = 7
             # Bottom boundary
             if v > 0 and arrang[v-1][h]==9:
                 arrang[v][h] = 12
+            elif v > 0 and arrang[v-1][h]==4:
+                arrang[v][h] = 13
     return arrang
 
 ####################################################
