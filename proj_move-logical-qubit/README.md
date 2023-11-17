@@ -10,6 +10,11 @@ is associated with an integer code as follows:
 ![dark = X stabilizers, light = Z stabilizers](plaquette-codes.png "Plaquette codes")
 
 
-For a distance-5 logical qubit moving down by 6 and left by 6, the desired results is:
+For a distance-5 logical qubit moving down by 6 and left by 6,
+the movement looks like:
 
 ![Move of a distance-5 logical qubit](L-move.png "L move")
+
+The desired abstract representation is:
+
+![Move of a distance-5 logical qubit](abstract-L-move.png "abstract L move")
