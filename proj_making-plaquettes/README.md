@@ -1,6 +1,6 @@
 # Making plaquettes
 
-Theere are a few points to consider when designing a tool:
+There are a few points to consider when designing a tool:
 - What is the scope?
   -  Applicability: only for the surface code or for generic stabilizer codes?
   -  Flexibility: assuming native connectivity between the physical qubits?
