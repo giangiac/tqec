@@ -71,13 +71,14 @@ export default function TQECApp() {
 	for (let x = 0; x <= app.renderer.width; x += gridSize) {
 		for (let y = 0; y <= app.renderer.height; y += gridSize) {
 			// Skip every other qubit
-			if (x % (gridSize * 2) === 0 && y % (gridSize * 2) === 0) continue;
+			if (x % (gridSize * 2) === 0 && y % (gridSize * 2) === 0)
+				continue;
 			if (x % (gridSize * 2) === gridSize && y % (gridSize * 2) === gridSize)
 				continue;
 			// Create a qubit
 			const qubit = new Qubit(x, y, 5, 'black', gridSize);
 			// Name the qubit according to its position
-			qubit.name = `${x}_${y}`;
+			qubit.name = `${x/gridSize}_${y/gridSize}`;
 			workspace.addChild(qubit);
 		}
 	}
