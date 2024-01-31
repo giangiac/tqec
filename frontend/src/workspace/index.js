@@ -75,7 +75,7 @@ export default function TQECApp() {
 			if (x % (gridSize * 2) === gridSize && y % (gridSize * 2) === gridSize)
 				continue;
 			// Create a qubit
-			const qubit = new Qubit(x, y, 5, gridSize);
+			const qubit = new Qubit(x, y, 5, 'black', gridSize);
 			// Name the qubit according to its position
 			qubit.name = `${x}_${y}`;
 			workspace.addChild(qubit);
