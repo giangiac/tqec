@@ -18,13 +18,20 @@ export default class Qubit extends Graphics {
     qubitType = 'data'
   ) {
     super();
+		// Color properties (as static fields).
+		// Associated to the role played by the qubit.
+		Qubit.color_none = color;
+		Qubit.color_x = 'green';
+		Qubit.color_z = 'red';
+		Qubit.color_a = 'yellow';
     // UI properties
     this.eventMode = 'static';
     this.buttonMode = true;
     this.cursor = 'pointer';
     this.globalX = x;
     this.globalY = y;
-    this.createCircle(x, y, radius, color);
+    this.radius = radius;
+    this.createCircle(x, y, this.radius, color);
     this.maxNeighborDist = 2 * this.gridSize;
     this.neighbors = [];
     this.gridSize = gridSize;
@@ -33,7 +40,6 @@ export default class Qubit extends Graphics {
     // Adjacent (degree 1) qubits
     this.isQubit = true;
     this.visible = true;
-    this.isSelected = false;
   }
 
   onPointerOver = () => {
@@ -65,8 +71,46 @@ export default class Qubit extends Graphics {
 
   changeColor(color) {
     this.clear();
-    this.createCircle(this.globalX, this.globalY, 5, color);
+    this.createCircle(this.globalX, this.globalY, this.radius, color);
   }
+
+  /* Tentative new functions.
+   *
+   * Not sure about the compatibility with deselect() and checkHitArea().
+   *
+  select() {
+    if (this.role === 'none') {
+      this.role = 'x';
+			this.changeColor(Qubit.color_x);
+			this.name = this.name.replace(/[QZA]/g, 'X');
+		} else if (this.role === 'x') {
+		    this.role = 'z';
+			this.changeColor(Qubit.color_z);
+			this.name = this.name.replace(/[QXA]/g, 'Z');
+		} else if (this.role === 'z') {
+		    this.role = 'a';
+			this.changeColor(Qubit.color_a);
+			this.name = this.name.replace(/[QXZ]/g, 'A');
+		} else if (this.role === 'a') {
+		    this.role = 'none';
+			this.changeColor(Qubit.color_none);
+			this.name = this.name.replace(/[ZXA]/g, 'Q');
+		}
+    this.removeChildren();
+  }
+
+	updateLabel() {
+		this.removeChildren();
+		// Create the label as a text element 
+		const label = new Text(this.name, {fill: Qubit.color_none, fontSize: 16, fontWeight: 'bold',});
+		label.anchor.set(0.5);
+
+		label.position.set(this.globalX, Math.max(this.globalY - 17, 13));
+		//this._onPointerOver();
+		// Add the label to the dot
+		this.addChild(label);
+	}
+*/
 
   deselect() {
     this.on('click', () => {
@@ -92,7 +136,7 @@ export default class Qubit extends Graphics {
       }
       this.isSelected = true;
       // Create a text element
-      const text = new Text(`Qubit:(${this.globalX},${this.globalY})`, {
+      const text = new Text(this.name, {
         fill: 'white',
         fontSize: 10
       }); // White text color

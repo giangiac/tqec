@@ -16,13 +16,14 @@ export default function TQECApp() {
   // Remove all children from the stage to avoid rendering issues
   app.stage.removeChildren();
   const gridSize = 50;
+  const qubitRadius = 5;
   // Let's create the workspace
   const workspace = new Container();
   workspace.name = 'workspace';
   // Create the grid container
   const grid = makeGrid(app, gridSize);
-
   workspace.addChild(grid);
+
   workspace.selectedPlaquette = null; // Used to update filters
   workspace.gridSize = gridSize;
 
@@ -77,9 +78,9 @@ export default function TQECApp() {
 			if (x % (gridSize * 2) === gridSize && y % (gridSize * 2) === gridSize)
 				continue;
 			// Create a qubit
-			const qubit = new Qubit(x, y, 5, 'black', gridSize);
+			const qubit = new Qubit(x, y, qubitRadius, gridSize, 'black');
 			// Name the qubit according to its position
-			qubit.name = `${x/gridSize}_${y/gridSize}`;
+			qubit.name = `Q(${x/gridSize},${y/gridSize})`;
 			workspace.addChild(qubit);
 		}
 	}
@@ -122,7 +123,7 @@ export default function TQECApp() {
     const qubits = workspace.children.filter((child) => child.isQubit === true);
     const qubit = qubits.find(
       // Find the qubit that was clicked
-      (q) => q.checkHitArea(relativeX, relativeY) === true
+      (q) => q.checkHitArea(relativeX, relativeY, qubitRadius) === true
     );
     if (!qubit && !(qubit?.isQubit === true)) return; // Check that the qubit exists
     // Check that the qubit is not already selected
