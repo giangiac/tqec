@@ -1,9 +1,9 @@
 import cirq
-
 from tqec.enums import PlaquetteOrientation
+from tqec.exceptions import TQECException
 from tqec.plaquette.qubit import PlaquetteQubit
 from tqec.plaquette.schedule import ScheduledCircuit
-from tqec.position import Position, Shape2D
+from tqec.position import Position
 
 
 class Plaquette:
@@ -13,7 +13,11 @@ class Plaquette:
     def get_mergeable_tag() -> str:
         return Plaquette._MERGEABLE_TAG
 
-    def __init__(self, qubits: list[PlaquetteQubit], circuit: ScheduledCircuit) -> None:
+    def __init__(
+        self,
+        qubits: list[PlaquetteQubit],
+        circuit: ScheduledCircuit,
+    ) -> None:
         """Represents a QEC plaquette
 
         This class stores qubits in the plaquette local coordinate system and a scheduled
@@ -22,19 +26,30 @@ class Plaquette:
         By convention, the local plaquette coordinate system is composed of a X-axis pointing
         to the right and a Y-axis pointing down.
 
-        :param qubits: qubits used by the plaquette circuit, given in the local plaquette
-            coordinate system.
-        :param circuit: scheduled quantum circuit implementing the computation that the
-            plaquette should represent.
+        Args:
+            qubits: qubits used by the plaquette circuit, given in the local
+                plaquette coordinate system.
+            circuit: scheduled quantum circuit implementing the computation that
+                the plaquette should represent.
+
+        Raises:
+            TQECException: if the provided circuit uses qubits not in the list of
+                PlaquetteQubit.
         """
+        plaquette_qubits = {qubit.to_grid_qubit() for qubit in qubits}
+        circuit_qubits = set(circuit.raw_circuit.all_qubits())
+        if not circuit_qubits.issubset(plaquette_qubits):
+            wrong_qubits = plaquette_qubits.difference(circuit_qubits)
+            raise TQECException(
+                f"The following qubits ({wrong_qubits}) are in the provided circuit "
+                "but not in the list of PlaquetteQubit."
+            )
         self._qubits = qubits
         self._circuit = circuit
 
     @property
-    def shape(self) -> Shape2D:
-        maxx = max(qubit.position.x for qubit in self.qubits)
-        maxy = max(qubit.position.y for qubit in self.qubits)
-        return Shape2D(maxx + 1, maxy + 1)
+    def origin(self) -> Position:
+        return Position(0, 0)
 
     @property
     def qubits(self) -> list[PlaquetteQubit]:
@@ -63,8 +78,9 @@ class SquarePlaquette(Plaquette):
         gates, for example in surface codes. It is a **qubit** ordering and has **no
         relation** with a temporal ordering.
 
-        :param circuit: scheduled quantum circuit implementing the computation that the
-            plaquette should represent.
+        Args:
+            circuit: scheduled quantum circuit implementing the computation that
+                the plaquette should represent.
         """
         super().__init__(self.get_data_qubits() + self.get_syndrome_qubits(), circuit)
 
@@ -116,20 +132,21 @@ class RoundedPlaquette(Plaquette):
         | 1     2 |
         |---------|
         ```
-        as `3` (the index of the bottom-right qubit in the initial ordering) is the 
+        as `3` (the index of the bottom-right qubit in the initial ordering) is the
         lowest index (i.e., the number `1`) and `4` follows.
 
-        Sub-classes of this class should take that into account to apply operations
+        Subclasses of this class should take that into account to apply operations
         on the correct qubits.
         This ordering is not to be confused with the temporal ordering of multi-qubit
         gates, for example in surface codes. It is a **qubit** ordering and has **no
         relation** with a temporal ordering.
 
-        :param circuit: scheduled quantum circuit implementing the computation that the
-            plaquette should represent.
-        :param orientation: side at which the plaquette is "pointing at". An orientation
-            of PlaquetteOrientation.UP will generate a plaquette with its rounded side
-            pointing up.
+        Args:
+            circuit: scheduled quantum circuit implementing the computation that
+                the plaquette should represent.
+            orientation: side at which the plaquette is "pointing at". An
+                orientation of PlaquetteOrientation.UP will generate a plaquette
+                with its rounded side pointing up.
         """
         super().__init__(
             RoundedPlaquette.get_data_qubits(orientation)
@@ -153,7 +170,8 @@ class RoundedPlaquette(Plaquette):
         the example from the class docstring, an orientation of PlaquetteOrientation.UP
         will return the qubits indexed 3 and 4 (or 2 and 3 in a 0-based indexing).
 
-        :param orientation: plaquette orientation
+        Args:
+            orientation: plaquette orientation
         """
         data_indices: tuple[int, int]
         if orientation == PlaquetteOrientation.RIGHT:

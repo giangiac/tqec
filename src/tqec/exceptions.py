@@ -1,0 +1,2 @@
+class TQECException(Exception):
+    pass
