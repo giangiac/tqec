@@ -1,9 +1,12 @@
 import logo from './tqec_logo.svg';
 import './App.css';
 import {Stage} from '@pixi/react'
-import TqecLibrary from './library'
-import TqecCode from './code'
 import formattedInfoTabContent from './formattedInfoTab';
+
+// Implementation of the workspace of the various tabs.
+import TqecLibrary from './tab_library'
+import TqecCode from './tab_code'
+import TqecTemplates from './tab_template'
 
 /* The logo has been created as the SVG rendering of the ASCII:
  *
@@ -42,6 +45,7 @@ function App() {
         <button className="Tab-button" id="tab1" onClick={() => handleTabClick(1)}>Info</button>
         <button className="Tab-button" id="tab2" onClick={() => handleTabClick(2)}>Compose library</button>
         <button className="Tab-button" id="tab3" onClick={() => handleTabClick(3)}>Create code</button>
+        <button className="Tab-button" id="tab4" onClick={() => handleTabClick(4)}>Populate templates</button>
         {/* -- Add more tabs as needed -- */}
       </div>
 
@@ -81,8 +85,7 @@ function App() {
               id="editableCircuitArea"
               placeholder="Edit the circuit here..."
             />
-        </div>
-
+          </div>
         </div>
 
         <div id="content3" className="Tab-content">
@@ -99,9 +102,18 @@ function App() {
               id="codeSummary"
               placeholder="Code will appear here..."
             />
+          </div>
         </div>
 
+        <div id="content4" className="Tab-content">
+          {/*-- Content for Tab 4 -- */}
+          <Stage width={1400} height={900} options={{backgroundColor: 'rgb(225, 193, 110)', antialias: true}}>
+            <TqecTemplates />
+          </Stage>
+
+          <pre id="result"></pre>
         </div>
+
         {/*-- Add more content areas as needed -- */}
       </div>
     </div>

@@ -1,14 +1,21 @@
 import { useApp } from '@pixi/react'
-import { makeGrid } from '../library/grid'
 import { Container, Graphics } from 'pixi.js'
-import Position from '../library/position'
-import { button } from '../library/button'
-import Plaquette from '../library/plaquette'
+
+// From the implementation of the tab 'library'
+import { makeGrid } from '../tab_library/grid'
+import Position from '../tab_library/position'
+import { button } from '../tab_library/button'
+import Plaquette from '../tab_library/plaquette'
+import Circuit from '../tab_library/circuit'
+import { savedPlaquettes, libraryColors } from '../tab_library'
+import { Qubit } from '../tab_library/qubit'
+
+// From the implementation of the tab 'code'
 import PlaquetteType from './plaquette-type'
-import Circuit from '../library/circuit'
-import { savedPlaquettes, libraryColors } from '../library'
-import { Qubit } from '../library/qubit'
+
+// From the main src folder
 import { GRID_SIZE_CODE_WORKSPACE, GUIDE_MAX_BOTTOM_RIGHT_CORNER_CODE_WORKSPACE, GUIDE_TOP_LEFT_CORNER_CODE_WORKSPACE } from '../constants'
+import { drawSquareFromTopLeft } from '../utils'
 
 /////////////////////////////////////////////////////////////
 
@@ -78,16 +85,10 @@ export default function TqecCode() {
 		// Add workspace guidelines.
 		let y0 = guideTopLeftCorner[1];
 		let message = '';
-		while (y0 + plaquetteDy <= GUIDE_MAX_BOTTOM_RIGHT_CORNER_CODE_WORKSPACE[0]) {
+		while (y0 + plaquetteDy <= GUIDE_MAX_BOTTOM_RIGHT_CORNER_CODE_WORKSPACE[1]) {
 			let x0 = guideTopLeftCorner[0];
-			while (x0 + plaquetteDx <= GUIDE_MAX_BOTTOM_RIGHT_CORNER_CODE_WORKSPACE[1]) {
-				const x1 = x0 + plaquetteDx;
-				const y1 = y0 + plaquetteDy;
-				outline.moveTo(x0*gridSize, y0*gridSize);
-				outline.lineTo(x1*gridSize, y0*gridSize);
-				outline.lineTo(x1*gridSize, y1*gridSize);
-				outline.lineTo(x0*gridSize, y1*gridSize);
-				outline.lineTo(x0*gridSize, y0*gridSize);
+			while (x0 + plaquetteDx <= GUIDE_MAX_BOTTOM_RIGHT_CORNER_CODE_WORKSPACE[0]) {
+				drawSquareFromTopLeft(outline, {x: x0*gridSize, y: y0*gridSize}, plaquetteDx*gridSize, plaquetteDy*gridSize)
 				x0 += plaquetteDx;
 				message += '  .';
 			}
@@ -96,13 +97,7 @@ export default function TqecCode() {
 		}
 		// Add library guidelines.
 		for (const [x0, y0] of libraryTopLeftCorners) {
-			const x1 = x0 + plaquetteDx;
-			const y1 = y0 + plaquetteDy;
-			outline.moveTo(x0*gridSize, y0*gridSize);
-			outline.lineTo(x1*gridSize, y0*gridSize);
-			outline.lineTo(x1*gridSize, y1*gridSize);
-			outline.lineTo(x0*gridSize, y1*gridSize);
-			outline.lineTo(x0*gridSize, y0*gridSize);
+			drawSquareFromTopLeft(outline, {x: x0*gridSize, y: y0*gridSize}, plaquetteDx*gridSize, plaquetteDy*gridSize)
 		}
         // Create the compact representation of the (empty) QEC code
         const codesummary = document.getElementById('codeSummary');
