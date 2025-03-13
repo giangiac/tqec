@@ -1,5 +1,7 @@
-tqec.gallery
+﻿tqec.gallery
 ============
+
+.. currentmodule:: tqec.gallery
 
 .. automodule:: tqec.gallery
 
@@ -9,6 +11,18 @@ tqec.gallery
 
    
    
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+   
+      cnot
+      cz
+      memory
+      move_rotation
+      stability
+      three_cnots
+   
    
 
    
@@ -18,22 +32,3 @@ tqec.gallery
    
    
    
-
-
-
-.. rubric:: Modules
-
-.. autosummary::
-   :toctree:
-   :recursive:
-
-
-   logical_cnot
-
-
-   solo_node
-
-
-   three_cnots
-
-

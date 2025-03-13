@@ -1,5 +1,7 @@
-tqec.circuit
+﻿tqec.circuit
 ============
+
+.. currentmodule:: tqec
 
 .. automodule:: tqec.circuit
 
@@ -9,50 +11,34 @@ tqec.circuit
 
    
    
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+   
+      merge_scheduled_circuits
+   
    
 
    
    
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:
+   
+      QubitMap
+      ScheduledCircuit
+   
    
 
    
    
+   .. rubric:: Exceptions
+
+   .. autosummary::
+      :toctree:
    
-
-
-
-.. rubric:: Modules
-
-.. autosummary::
-   :toctree:
-   :recursive:
-
-
-   coordinates
-
-
-   generation
-
-
-   instructions
-
-   measurement
-
-   measurement_map
-
-
-
-   moment
-
-
-   observable_qubits
-
-
-   qubit
-
-   qubit_map
-
-
-
-   schedule
-
+      ScheduleException
+   
+   

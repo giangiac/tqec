@@ -16,8 +16,8 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
+  <!--
+    this give us a css class that will be invisible only if js is disabled
   -->
   <noscript>
     <style>
@@ -27,26 +27,29 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_autosummary/tqec.gallery';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="tqec.gallery.logical_cnot" href="tqec.gallery.logical_cnot.html" />
-    <link rel="prev" title="tqec.exceptions.TQECWarning" href="tqec.exceptions.TQECWarning.html" />
+    <link rel="next" title="cnot" href="tqec.gallery.cnot.html" />
+    <link rel="prev" title="TemporalBlockBorder" href="tqec.compile.blocks.TemporalBlockBorder.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -142,6 +145,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../contributor_guide.html">
     Contributor Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../gallery/index.html">
+    Gallery
   </a>
 </li>
 
@@ -274,6 +284,13 @@
 </li>
 
 
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../gallery/index.html">
+    Gallery
+  </a>
+</li>
+
+
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="../api.html">
     API Reference
@@ -335,317 +352,115 @@
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="tqec.html">tqec</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 has-children"><a class="reference internal" href="tqec.circuit.html">tqec.circuit</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.circuit.coordinates.html">tqec.circuit.coordinates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.coordinates.StimCoordinates.html">tqec.circuit.coordinates.StimCoordinates</a></li>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="tqec.templates.html">tqec.templates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="tqec.templates.display_template.html">display_template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.templates.display_template_from_instantiation.html">display_template_from_instantiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.templates.LayoutTemplate.html">LayoutTemplate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.templates.QubitTemplate.html">QubitTemplate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.templates.Template.html">Template</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.circuit.generation.html">tqec.circuit.generation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.generation.generate_circuit.html">tqec.circuit.generation.generate_circuit</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.generation.generate_circuit_from_instantiation.html">tqec.circuit.generation.generate_circuit_from_instantiation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tqec.plaquette.html">tqec.plaquette</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="tqec.plaquette.FrozenDefaultDict.html">FrozenDefaultDict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.plaquette.Plaquette.html">Plaquette</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.plaquette.PlaquetteOrientation.html">PlaquetteOrientation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.plaquette.PlaquetteQubits.html">PlaquetteQubits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.plaquette.PlaquetteSide.html">PlaquetteSide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.plaquette.Plaquettes.html">Plaquettes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.plaquette.RG.html">RG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.plaquette.RPNG.html">RPNG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.plaquette.RPNGDescription.html">RPNGDescription</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.plaquette.RepeatedPlaquettes.html">RepeatedPlaquettes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.plaquette.SquarePlaquetteQubits.html">SquarePlaquetteQubits</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.circuit.instructions.html">tqec.circuit.instructions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.instructions.is_annotation_instruction.html">tqec.circuit.instructions.is_annotation_instruction</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.instructions.is_measurement_instruction.html">tqec.circuit.instructions.is_measurement_instruction</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.instructions.is_multi_qubit_measurement_instruction.html">tqec.circuit.instructions.is_multi_qubit_measurement_instruction</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.instructions.is_single_qubit_measurement_instruction.html">tqec.circuit.instructions.is_single_qubit_measurement_instruction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tqec.circuit.html">tqec.circuit</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="tqec.circuit.merge_scheduled_circuits.html">merge_scheduled_circuits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.circuit.QubitMap.html">QubitMap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.circuit.ScheduledCircuit.html">ScheduledCircuit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.circuit.ScheduleException.html">tqec.circuit.ScheduleException</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.circuit.measurement.html">tqec.circuit.measurement</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.measurement.get_measurements_from_circuit.html">tqec.circuit.measurement.get_measurements_from_circuit</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.measurement.AbstractMeasurement.html">tqec.circuit.measurement.AbstractMeasurement</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.measurement.Measurement.html">tqec.circuit.measurement.Measurement</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.measurement.RepeatedMeasurement.html">tqec.circuit.measurement.RepeatedMeasurement</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tqec.computation.html">tqec.computation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="tqec.computation.BlockGraph.html">BlockGraph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.computation.CorrelationSurface.html">CorrelationSurface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.computation.Cube.html">Cube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.computation.Pipe.html">Pipe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.computation.PipeKind.html">PipeKind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.computation.Port.html">Port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.computation.YHalfCube.html">YHalfCube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.computation.ZXCube.html">ZXCube</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.circuit.measurement_map.html">tqec.circuit.measurement_map</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.measurement_map.MeasurementRecordsMap.html">tqec.circuit.measurement_map.MeasurementRecordsMap</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tqec.compile.html">tqec.compile</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="tqec.compile.compile_block_graph.html">compile_block_graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.compile.generate_circuit.html">generate_circuit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.compile.BlockBuilder.html">BlockBuilder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.compile.CompiledBlock.html">CompiledBlock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.compile.CompiledGraph.html">CompiledGraph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.compile.CubeSpec.html">CubeSpec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.compile.PipeSpec.html">PipeSpec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.compile.SubstitutionBuilder.html">SubstitutionBuilder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.compile.TopologicalComputationGraph.html">TopologicalComputationGraph</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.circuit.moment.html">tqec.circuit.moment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.moment.iter_stim_circuit_without_repeat_by_moments.html">tqec.circuit.moment.iter_stim_circuit_without_repeat_by_moments</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.moment.Moment.html">tqec.circuit.moment.Moment</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tqec.compile.blocks.html">tqec.compile.blocks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="tqec.compile.blocks.merge_parallel_block_layers.html">merge_parallel_block_layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.compile.blocks.BaseComposedLayer.html">BaseComposedLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.compile.blocks.BaseLayer.html">BaseLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.compile.blocks.Block.html">Block</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.compile.blocks.LayoutLayer.html">LayoutLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.compile.blocks.LayoutPosition2D.html">LayoutPosition2D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.compile.blocks.PlaquetteLayer.html">PlaquetteLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.compile.blocks.RawCircuitLayer.html">RawCircuitLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.compile.blocks.RepeatedLayer.html">RepeatedLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.compile.blocks.SequencedLayers.html">SequencedLayers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.compile.blocks.SpatialBlockBorder.html">SpatialBlockBorder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.compile.blocks.TemporalBlockBorder.html">TemporalBlockBorder</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.circuit.observable_qubits.html">tqec.circuit.observable_qubits</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.observable_qubits.observable_qubits_from_template.html">tqec.circuit.observable_qubits.observable_qubits_from_template</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">tqec.gallery</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="tqec.gallery.cnot.html">cnot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.gallery.cz.html">cz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.gallery.memory.html">memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.gallery.move_rotation.html">move_rotation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.gallery.stability.html">stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.gallery.three_cnots.html">three_cnots</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.circuit.qubit.html">tqec.circuit.qubit</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.qubit.count_qubit_accesses.html">tqec.circuit.qubit.count_qubit_accesses</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.qubit.get_used_qubit_indices.html">tqec.circuit.qubit.get_used_qubit_indices</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.qubit.GridQubit.html">tqec.circuit.qubit.GridQubit</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tqec.interop.html">tqec.interop</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="tqec.interop.block_synthesis.html">block_synthesis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.interop.display_collada_model.html">display_collada_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.interop.positioned_block_synthesis.html">positioned_block_synthesis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.interop.read_block_graph_from_dae_file.html">read_block_graph_from_dae_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.interop.write_block_graph_to_dae_file.html">write_block_graph_to_dae_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.interop.PositionedZX.html">PositionedZX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.interop.RGBA.html">RGBA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.interop.SynthesisStrategy.html">SynthesisStrategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.interop.TQECColor.html">TQECColor</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.circuit.qubit_map.html">tqec.circuit.qubit_map</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.qubit_map.get_qubit_map.html">tqec.circuit.qubit_map.get_qubit_map</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.qubit_map.QubitMap.html">tqec.circuit.qubit_map.QubitMap</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tqec.simulation.html">tqec.simulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="tqec.simulation.plot_observable_as_inset.html">plot_observable_as_inset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.simulation.start_simulation_using_sinter.html">start_simulation_using_sinter</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.circuit.schedule.html">tqec.circuit.schedule</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.schedule.circuit.html">tqec.circuit.schedule.circuit</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.schedule.exception.html">tqec.circuit.schedule.exception</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.schedule.manipulation.html">tqec.circuit.schedule.manipulation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.schedule.schedule.html">tqec.circuit.schedule.schedule</a></li>
-</ul>
-</details></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="tqec.compile.html">tqec.compile</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.compile.block.html">tqec.compile.block</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.compile.block.BlockLayout.html">tqec.compile.block.BlockLayout</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.compile.block.CompiledBlock.html">tqec.compile.block.CompiledBlock</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.compile.compile.html">tqec.compile.compile</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.compile.compile.compile_block_graph.html">tqec.compile.compile.compile_block_graph</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.compile.compile.CompiledGraph.html">tqec.compile.compile.CompiledGraph</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.compile.observables.html">tqec.compile.observables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.compile.observables.get_center_qubit_at_horizontal_pipe.html">tqec.compile.observables.get_center_qubit_at_horizontal_pipe</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.compile.observables.get_midline_qubits_for_cube.html">tqec.compile.observables.get_midline_qubits_for_cube</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.compile.observables.get_stabilizer_region_qubits_for_pipe.html">tqec.compile.observables.get_stabilizer_region_qubits_for_pipe</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.compile.observables.inplace_add_observables.html">tqec.compile.observables.inplace_add_observables</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.compile.specs.html">tqec.compile.specs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.compile.specs.base.html">tqec.compile.specs.base</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.compile.specs.enums.html">tqec.compile.specs.enums</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.compile.specs.library.html">tqec.compile.specs.library</a></li>
-</ul>
-</details></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="tqec.computation.html">tqec.computation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.computation.abstract_observable.html">tqec.computation.abstract_observable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.computation.abstract_observable.correlation_surface_to_abstract_observable.html">tqec.computation.abstract_observable.correlation_surface_to_abstract_observable</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.computation.abstract_observable.AbstractObservable.html">tqec.computation.abstract_observable.AbstractObservable</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.computation.base_graph.html">tqec.computation.base_graph</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.computation.base_graph.ComputationGraph.html">tqec.computation.base_graph.ComputationGraph</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.computation.base_graph.ComputationNode.html">tqec.computation.base_graph.ComputationNode</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.computation.block_graph.html">tqec.computation.block_graph</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.computation.block_graph.BlockKind.html">tqec.computation.block_graph.BlockKind</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.computation.block_graph.BlockGraph.html">tqec.computation.block_graph.BlockGraph</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.computation.conversion.html">tqec.computation.conversion</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.computation.conversion.convert_block_graph_to_zx_graph.html">tqec.computation.conversion.convert_block_graph_to_zx_graph</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.computation.conversion.convert_zx_graph_to_block_graph.html">tqec.computation.conversion.convert_zx_graph_to_block_graph</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.computation.correlation.html">tqec.computation.correlation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.computation.correlation.find_correlation_surfaces.html">tqec.computation.correlation.find_correlation_surfaces</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.computation.correlation.find_correlation_surfaces_from_leaf.html">tqec.computation.correlation.find_correlation_surfaces_from_leaf</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.computation.correlation.CorrelationSurface.html">tqec.computation.correlation.CorrelationSurface</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.computation.cube.html">tqec.computation.cube</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.computation.cube.Cube.html">tqec.computation.cube.Cube</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.computation.cube.CubeKind.html">tqec.computation.cube.CubeKind</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.computation.cube.Port.html">tqec.computation.cube.Port</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.computation.cube.YCube.html">tqec.computation.cube.YCube</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.computation.cube.ZXBasis.html">tqec.computation.cube.ZXBasis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.computation.cube.ZXCube.html">tqec.computation.cube.ZXCube</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.computation.pipe.html">tqec.computation.pipe</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.computation.pipe.Pipe.html">tqec.computation.pipe.Pipe</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.computation.pipe.PipeKind.html">tqec.computation.pipe.PipeKind</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.computation.zx_graph.html">tqec.computation.zx_graph</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.computation.zx_graph.ZXEdge.html">tqec.computation.zx_graph.ZXEdge</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.computation.zx_graph.ZXGraph.html">tqec.computation.zx_graph.ZXGraph</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.computation.zx_graph.ZXKind.html">tqec.computation.zx_graph.ZXKind</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.computation.zx_graph.ZXNode.html">tqec.computation.zx_graph.ZXNode</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.computation.zx_plot.html">tqec.computation.zx_plot</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.computation.zx_plot.draw_correlation_surface_on.html">tqec.computation.zx_plot.draw_correlation_surface_on</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.computation.zx_plot.draw_zx_graph_on.html">tqec.computation.zx_plot.draw_zx_graph_on</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.computation.zx_plot.plot_zx_graph.html">tqec.computation.zx_plot.plot_zx_graph</a></li>
-</ul>
-</details></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="tqec.exceptions.html">tqec.exceptions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="tqec.exceptions.TQECException.html">tqec.exceptions.TQECException</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tqec.exceptions.TQECWarning.html">tqec.exceptions.TQECWarning</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">tqec.gallery</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.gallery.logical_cnot.html">tqec.gallery.logical_cnot</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.gallery.logical_cnot.logical_cnot_block_graph.html">tqec.gallery.logical_cnot.logical_cnot_block_graph</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.gallery.logical_cnot.logical_cnot_zx_graph.html">tqec.gallery.logical_cnot.logical_cnot_zx_graph</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.gallery.solo_node.html">tqec.gallery.solo_node</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.gallery.solo_node.solo_node_block_graph.html">tqec.gallery.solo_node.solo_node_block_graph</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.gallery.solo_node.solo_node_zx_graph.html">tqec.gallery.solo_node.solo_node_zx_graph</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.gallery.three_cnots.html">tqec.gallery.three_cnots</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.gallery.three_cnots.three_cnots_block_graph.html">tqec.gallery.three_cnots.three_cnots_block_graph</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.gallery.three_cnots.three_cnots_zx_graph.html">tqec.gallery.three_cnots.three_cnots_zx_graph</a></li>
-</ul>
-</details></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="tqec.interop.html">tqec.interop</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.interop.collada.html">tqec.interop.collada</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.interop.collada.read_block_graph_from_dae_file.html">tqec.interop.collada.read_block_graph_from_dae_file</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.interop.collada.write_block_graph_to_dae_file.html">tqec.interop.collada.write_block_graph_to_dae_file</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.interop.collada.BlockLibraryKey.html">tqec.interop.collada.BlockLibraryKey</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.interop.collada.Transformation.html">tqec.interop.collada.Transformation</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.interop.collada_html_viewer.html">tqec.interop.collada_html_viewer</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.interop.collada_html_viewer.display_collada_model.html">tqec.interop.collada_html_viewer.display_collada_model</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.interop.collada_html_viewer.ColladaHTMLViewer.html">tqec.interop.collada_html_viewer.ColladaHTMLViewer</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.interop.color.html">tqec.interop.color</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.interop.color.RGBA.html">tqec.interop.color.RGBA</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.interop.correlation.html">tqec.interop.correlation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.interop.correlation.get_transformations_for_correlation_surface.html">tqec.interop.correlation.get_transformations_for_correlation_surface</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.interop.geometry.html">tqec.interop.geometry</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.interop.geometry.get_correlation_surface_geometry.html">tqec.interop.geometry.get_correlation_surface_geometry</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.interop.geometry.BlockGeometries.html">tqec.interop.geometry.BlockGeometries</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.interop.geometry.Face.html">tqec.interop.geometry.Face</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.interop.geometry.FaceKind.html">tqec.interop.geometry.FaceKind</a></li>
-</ul>
-</details></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="tqec.interval.html">tqec.interval</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="tqec.interval.Interval.html">tqec.interval.Interval</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="tqec.noise_models.html">tqec.noise_models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.noise_models.noise_model.html">tqec.noise_models.noise_model</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.noise_models.noise_model.occurs_in_classical_control_system.html">tqec.noise_models.noise_model.occurs_in_classical_control_system</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.noise_models.noise_model.NoiseModel.html">tqec.noise_models.noise_model.NoiseModel</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.noise_models.noise_model.NoiseRule.html">tqec.noise_models.noise_model.NoiseRule</a></li>
-</ul>
-</details></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="tqec.plaquette.html">tqec.plaquette</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.plaquette.enums.html">tqec.plaquette.enums</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.enums.MeasurementBasis.html">tqec.plaquette.enums.MeasurementBasis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.enums.PlaquetteOrientation.html">tqec.plaquette.enums.PlaquetteOrientation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.enums.PlaquetteSide.html">tqec.plaquette.enums.PlaquetteSide</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.enums.ResetBasis.html">tqec.plaquette.enums.ResetBasis</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.plaquette.frozendefaultdict.html">tqec.plaquette.frozendefaultdict</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.frozendefaultdict.FrozenDefaultDict.html">tqec.plaquette.frozendefaultdict.FrozenDefaultDict</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.frozendefaultdict.FrozenException.html">tqec.plaquette.frozendefaultdict.FrozenException</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.plaquette.library.html">tqec.plaquette.library</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.library.builder.html">tqec.plaquette.library.builder</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.library.css.html">tqec.plaquette.library.css</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.library.empty.html">tqec.plaquette.library.empty</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.library.zxxz.html">tqec.plaquette.library.zxxz</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.plaquette.plaquette.html">tqec.plaquette.plaquette</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.plaquette.Plaquette.html">tqec.plaquette.plaquette.Plaquette</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.plaquette.Plaquettes.html">tqec.plaquette.plaquette.Plaquettes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.plaquette.RepeatedPlaquettes.html">tqec.plaquette.plaquette.RepeatedPlaquettes</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.plaquette.qubit.html">tqec.plaquette.qubit</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.qubit.PlaquetteQubits.html">tqec.plaquette.qubit.PlaquetteQubits</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.qubit.SquarePlaquetteQubits.html">tqec.plaquette.qubit.SquarePlaquetteQubits</a></li>
-</ul>
-</details></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="tqec.position.html">tqec.position</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="tqec.position.Direction3D.html">tqec.position.Direction3D</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tqec.position.Displacement.html">tqec.position.Displacement</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tqec.position.FloatPosition3D.html">tqec.position.FloatPosition3D</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tqec.position.Position2D.html">tqec.position.Position2D</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tqec.position.Position3D.html">tqec.position.Position3D</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tqec.position.Shape2D.html">tqec.position.Shape2D</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tqec.position.SignedDirection3D.html">tqec.position.SignedDirection3D</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="tqec.scale.html">tqec.scale</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="tqec.scale.round_or_fail.html">tqec.scale.round_or_fail</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tqec.scale.LinearFunction.html">tqec.scale.LinearFunction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tqec.scale.Scalable2D.html">tqec.scale.Scalable2D</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tqec.scale.ScalableInterval.html">tqec.scale.ScalableInterval</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="tqec.simulation.html">tqec.simulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.simulation.generation.html">tqec.simulation.generation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.simulation.generation.generate_sinter_tasks.html">tqec.simulation.generation.generate_sinter_tasks</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.simulation.generation.generate_stim_circuits_with_detectors.html">tqec.simulation.generation.generate_stim_circuits_with_detectors</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.simulation.plotting.html">tqec.simulation.plotting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.simulation.plotting.inset.html">tqec.simulation.plotting.inset</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.simulation.simulation.html">tqec.simulation.simulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.simulation.simulation.start_simulation_using_sinter.html">tqec.simulation.simulation.start_simulation_using_sinter</a></li>
-</ul>
-</details></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="tqec.templates.html">tqec.templates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.templates.base.html">tqec.templates.base</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.base.RectangularTemplate.html">tqec.templates.base.RectangularTemplate</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.base.Template.html">tqec.templates.base.Template</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.templates.display.html">tqec.templates.display</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.display.display_template.html">tqec.templates.display.display_template</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.display.display_template_from_instantiation.html">tqec.templates.display.display_template_from_instantiation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.display.get_template_representation_from_instantiation.html">tqec.templates.display.get_template_representation_from_instantiation</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.templates.enums.html">tqec.templates.enums</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.enums.CornerPositionEnum.html">tqec.templates.enums.CornerPositionEnum</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.enums.TemplateOrientation.html">tqec.templates.enums.TemplateOrientation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.enums.TemplateRelativePositionEnum.html">tqec.templates.enums.TemplateRelativePositionEnum</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.templates.layout.html">tqec.templates.layout</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.layout.LayoutTemplate.html">tqec.templates.layout.LayoutTemplate</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.templates.qubit.html">tqec.templates.qubit</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.qubit.Qubit4WayJunctionTemplate.html">tqec.templates.qubit.Qubit4WayJunctionTemplate</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.qubit.QubitHorizontalBorders.html">tqec.templates.qubit.QubitHorizontalBorders</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.qubit.QubitTemplate.html">tqec.templates.qubit.QubitTemplate</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.qubit.QubitVerticalBorders.html">tqec.templates.qubit.QubitVerticalBorders</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="tqec.templates.subtemplates.html">tqec.templates.subtemplates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.subtemplates.get_spatially_distinct_3d_subtemplates.html">tqec.templates.subtemplates.get_spatially_distinct_3d_subtemplates</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.subtemplates.get_spatially_distinct_subtemplates.html">tqec.templates.subtemplates.get_spatially_distinct_subtemplates</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.subtemplates.Unique3DSubTemplates.html">tqec.templates.subtemplates.Unique3DSubTemplates</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.subtemplates.UniqueSubTemplates.html">tqec.templates.subtemplates.UniqueSubTemplates</a></li>
-</ul>
-</details></li>
-</ul>
-</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tqec.utils.html">tqec.utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="tqec.utils.round_or_fail.html">round_or_fail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.utils.Basis.html">Basis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.utils.BlockPosition2D.html">BlockPosition2D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.utils.Direction3D.html">Direction3D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.utils.LinearFunction.html">LinearFunction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.utils.NoiseModel.html">NoiseModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.utils.Orientation.html">Orientation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.utils.PhysicalQubitPosition2D.html">PhysicalQubitPosition2D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.utils.PlaquettePosition2D.html">PlaquettePosition2D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.utils.Position3D.html">Position3D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.utils.Shift2D.html">Shift2D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.utils.SignedDirection3D.html">SignedDirection3D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.utils.TQECException.html">tqec.utils.TQECException</a></li>
 </ul>
 </details></li>
 </ul>
@@ -655,9 +470,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -686,9 +506,6 @@
     
     <li class="breadcrumb-item"><a href="../api.html" class="nav-link">API Reference</a></li>
     
-    
-    <li class="breadcrumb-item"><a href="tqec.html" class="nav-link">tqec</a></li>
-    
     <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">tqec.gallery</span></li>
   </ul>
 </nav>
@@ -708,17 +525,37 @@
                   
   <section id="module-tqec.gallery">
 <span id="tqec-gallery"></span><h1>tqec.gallery<a class="headerlink" href="#module-tqec.gallery" title="Link to this heading">#</a></h1>
-<p class="rubric">Modules</p>
+<p>Collection of pre-built logical computations.</p>
+<p>This module contains functions that build <a class="reference internal" href="tqec.computation.BlockGraph.html#tqec.computation.BlockGraph" title="tqec.computation.block_graph.BlockGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlockGraph</span></code></a>
+instances representing the logical computations, including:</p>
+<ul class="simple">
+<li><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">memory</span></code>: memory experiment</p></li>
+<li><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">stability</span></code>: stability experiment</p></li>
+<li><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">cnot</span></code>: logical CNOT gate</p></li>
+<li><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">cz</span></code>: logical CZ gate</p></li>
+<li><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">move_rotation</span></code>: rotate spatial boundaries by moving the logical qubit in spacetime</p></li>
+<li><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">three_cnots</span></code>: three logical CNOT gates compressed in spacetime</p></li>
+</ul>
+<p class="rubric">Functions</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="tqec.gallery.logical_cnot.html#module-tqec.gallery.logical_cnot" title="tqec.gallery.logical_cnot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logical_cnot</span></code></a></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="tqec.gallery.cnot.html#tqec.gallery.cnot" title="tqec.gallery.cnot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cnot</span></code></a>([observable_basis])</p></td>
+<td><p>Create a block graph for the logical CNOT gate.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="tqec.gallery.solo_node.html#module-tqec.gallery.solo_node" title="tqec.gallery.solo_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solo_node</span></code></a></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="tqec.gallery.cz.html#tqec.gallery.cz" title="tqec.gallery.cz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cz</span></code></a>([support_flows])</p></td>
+<td><p>Create a block graph representing the logical CZ gate.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="tqec.gallery.three_cnots.html#module-tqec.gallery.three_cnots" title="tqec.gallery.three_cnots"><code class="xref py py-obj docutils literal notranslate"><span class="pre">three_cnots</span></code></a></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="tqec.gallery.memory.html#tqec.gallery.memory" title="tqec.gallery.memory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">memory</span></code></a>([observable_basis])</p></td>
+<td><p>Create a block graph with a single cube that represents a logical memory experiment.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="tqec.gallery.move_rotation.html#tqec.gallery.move_rotation" title="tqec.gallery.move_rotation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">move_rotation</span></code></a>([observable_basis])</p></td>
+<td><p>Create a block graph for moving and rotating the spatial boundaries of a logical qubit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="tqec.gallery.stability.html#tqec.gallery.stability" title="tqec.gallery.stability"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stability</span></code></a>([observable_basis])</p></td>
+<td><p>Create a block graph with a single cube that represents a logical stability experiment.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="tqec.gallery.three_cnots.html#tqec.gallery.three_cnots" title="tqec.gallery.three_cnots"><code class="xref py py-obj docutils literal notranslate"><span class="pre">three_cnots</span></code></a>([observable_basis])</p></td>
+<td><p>Create a block graph for three logical CNOT gates compressed in spacetime.</p></td>
 </tr>
 </tbody>
 </table>
@@ -736,20 +573,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="tqec.exceptions.TQECWarning.html"
+       href="tqec.compile.blocks.TemporalBlockBorder.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">tqec.exceptions.TQECWarning</p>
+        <p class="prev-next-title">TemporalBlockBorder</p>
       </div>
     </a>
     <a class="right-next"
-       href="tqec.gallery.logical_cnot.html"
+       href="tqec.gallery.cnot.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">tqec.gallery.logical_cnot</p>
+        <p class="prev-next-title">cnot</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -765,13 +602,13 @@
 
 
   <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../_sources/_autosummary/tqec.gallery.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/_autosummary/tqec.gallery.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
 
 </div></div>
               
@@ -786,8 +623,8 @@
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -820,7 +657,8 @@
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.0.
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
 </p></div>
       
     </div>
